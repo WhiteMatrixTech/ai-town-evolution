@@ -178,38 +178,25 @@ export class BedrockChatCompletionContentMistral implements ChatCompletionConten
 
 export class awsBedrock implements LLM_API {
 
-  private client: BedrockRuntimeClient = new BedrockRuntimeClient({ region: "us-west-2" });
+  private client: BedrockRuntimeClient = new BedrockRuntimeClient({ region: "us-east-1",
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'your accessKeyId',
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'your secretAccessKey',
+      sessionToken: process.env.AWS_SESSION_TOKEN || 'your sessionToken'
+    } });
 
-
-  // private model_config: ModelConfig = {
-  //   model: "claude-3-sonnet",
-  //   model_type: ModelType.Claude3,
-  //   top_p: 0.9,
-  //   temperature: 0.9,
-  //   max_tokens: 500,
-  //   model_id: "anthropic.claude-3-sonnet-20240229-v1:0",
-  //   anthropic_version: "bedrock-2023-05-31",
-  // };
 
   private model_config: ModelConfig = {
-    model: "mistral-8x7b",
-    model_type: ModelType.Mistral,
+    model: "claude-3-sonnet",
+    model_type: ModelType.Claude3,
     top_p: 0.9,
     temperature: 0.9,
-    max_tokens: 500,
-    model_id: "mistral.mixtral-8x7b-instruct-v0:1",
+    max_tokens: 1000,
+    model_id: "anthropic.claude-3-sonnet-20240229-v1:0",
+    anthropic_version: "bedrock-2023-05-31",
   };
 
-
-
-
-
-
-  constructor(llm_model: string) {
-
-
-
-  }
+  constructor(llm_model: string) {}
 
   convertMessagePayloadMistral(messages: any, modelConfig: ModelConfig): any {
 

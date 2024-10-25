@@ -244,6 +244,11 @@ just convex env set LLM_MODEL # model
 # Cloud Convex
 npx convex env set LLM_API_HOST # url
 npx convex env set LLM_MODEL # model
+# AWS Bedrock
+export AWS_ACCESS_KEY_ID="you key id"
+export AWS_SECRET_ACCESS_KEY="your secret"
+export AWS_SESSION_TOKEN="your token“
+credentials are currently not in effect.
 ```
 
 The embeddings model config needs to be changed [in code](./convex/util/llm.ts),

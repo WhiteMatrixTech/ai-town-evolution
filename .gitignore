@@ -42,3 +42,6 @@ next-env.d.ts
 dist
 convex-local-backend*
 convex_local_storage
+
+#.idea
+.idea
